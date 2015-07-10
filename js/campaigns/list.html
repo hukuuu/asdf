@@ -1,0 +1,25 @@
+<ion-view view-title="Campaigns">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-avatar" ng-repeat="campaign in campaigns" ng-click="onClick(campaign)">
+                <img src="img/SC_logo.png" style="border-radius:0" />
+                <h2>{{campaign.title}}
+                        <small style="float:right" class="campaign-status campaign-status-{{getStatus(campaign)}}">{{getStatus(campaign) | capitalize}}</small>
+                </h2>
+                <p>
+                    <small><a class="subdued">{{campaign.start | date : 'MMM d'}} - {{campaign.end | date : 'MMM d'}}</a></small>
+                    <span style="float:right">
+                        <a class="subdued">${{campaign.cash}}</a>
+                    </span>
+                </p>
+            </ion-item>
+        </ion-list>
+        <div ng-show="!campaigns.length">
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style="text-align:center;font-size:2em;">No custom campaigns</p>
+        </div>
+    </ion-content>
+</ion-view>

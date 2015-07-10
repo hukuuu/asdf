@@ -1,0 +1,53 @@
+<ion-view view-title="{{title}}">
+    <ion-content scroll="false">
+        <ion-slide-box class="view-slide-box" on-slide-changed="slideHasChanged($index)">
+            <ion-slide>
+                <div>
+                    <xchart id="summaryChart" data="summaryData" type="{{summaryType}}" opts="summaryOpts"></xchart>
+                </div>
+                <div>
+                    <span>5 days</span>
+                    <span class="label superb">sup</span>
+                    <span class="label veryPositive">v. pos</span>
+                    <span class="label positive">pos</span>
+                    <span class="label negative">neg</span>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <xchart id="historyChart" data="historyData" type="{{historyType}}" opts="historyOpts"></xchart>
+                </div>
+                <div>
+                    <span>30 days</span>
+                    <span class="label positive">pos</span>
+                    <span class="label negative">neg</span>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div>
+                    <xchart id="overallChart" data="overallData" type="{{overallType}}" opts="overallOpts"></xchart>
+                </div>
+                <div>
+                    <span>overview</span>
+                    <span class="label superb">sup</span>
+                    <span class="label veryPositive">v. pos</span>
+                    <span class="label positive">pos</span>
+                    <span class="label negative">neg</span>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+        <div class="view-scroll">
+                <div cg-busy="{promise:loadSampleTweets,wrapperClass:'test'}"></div>
+            <ion-scroll style="height:100%">
+                <p style="text-align:center; color: rgb(81, 79, 79); ">
+                    <small>please tap on the graphics to show some tweets</small>
+                </p>
+                <ion-list>
+                    <ion-item ng-repeat="tweet in sampleTweets" class="view-tweet-item">
+                        <span class="label {{tweet.sentiment}}">{{tweet.sentiment | label}}</span> {{tweet.text}}
+                    </ion-item>
+                </ion-list>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-view>

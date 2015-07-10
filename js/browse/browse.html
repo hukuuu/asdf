@@ -1,0 +1,13 @@
+<ion-view view-title="Explore">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="domain in items">
+                <p style="font-size: 1.3em; line-height: 1.3em;margin-bottom: 0.3em;"><strong>{{domain.category}}</strong></p>
+                  <a class="thumbnail" ng-click="onClick(item)" ng-repeat="item in domain.items" >
+                    <img ng-src="img/{{item.picture}}"  />
+                    <small>{{item.title}}</small>
+                  </a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

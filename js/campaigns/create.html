@@ -1,0 +1,67 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <button style="font-size:1.3em;" class="button button-clear button-stable" ng-click="cancel()">Cancel</button>
+        <h1 style="font-size:1.3em;" class="title">New Campaign</h1>
+        <button style="font-size:1.3em;color:#0073DD;" class="button button-clear button-positive" ng-click="create()" ng-disabled="!isValid(newCampaign)">Create</button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-divider" />
+            <label class="item item-input">
+                <i class="senticon senticon-owl"></i>
+                <span class="input-label">Title</span>
+                <input style="font-size:1.2em;line-height:1.2em;" type="text" ng-model="newCampaign.title" placeholder="Christiano Ronaldo">
+            </label>
+            <label class="item item-input">
+                <i class="senticon senticon-hash"></i>
+                <span class="input-label">Keywords</span>
+                <input style="font-size:1.2em;line-height:1.2em;" type="text" ng-model="newCampaign.keywords" placeholder="#ronaldo, #c.ronaldo ..." />
+            </label>
+            <div class="item item-divider" />
+            <label class="item item-input">
+                <i class="senticon senticon-starttime"></i>
+                <span class="input-label">Start</span>
+                <input style="font-size:1.2em;line-height:1.2em;padding:0;" ng-disabled="lastMonth" type="date" placeholder="From Date" ng-model="newCampaign.start">
+            </label>
+            <label class="item item-input">
+                <i class="senticon senticon-endtime"></i>
+                <span class="input-label">End</span>
+                <input style="font-size:1.2em;line-height:1.2em;padding:0" ng-disabled="lastMonth" type="date" placeholder="From Date" ng-model="newCampaign.end">
+            </label>
+            <li class="item item-checkbox">
+                Last Month
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="lastMonth">
+                </label>
+            </li>
+            <div class="item item-divider" />
+            <div>
+                <br>
+                <p style="text-align:center;font-size:1.4em;margin:0 0 0.5em 0;">${{newCampaign.cash}} for {{estimateTweets(newCampaign.cash)}}
+                    <sup>
+                    <img style="width:1.4em;" src="img/tweet.png" />
+                </sup>
+                </p>
+            </div>
+            <div style="padding-left:13px;" class="range range-positive">
+                <!-- <i class="icon ion-social-usd-outline"></i> -->
+                <i class="senticon senticon-money"></i>
+                <!-- <span style="font-size:16px;">Budget</span> -->
+                <input style="margin:0 2em 0 2em" type="range" name="volume" min="10" max="100" step="10" ng-model="newCampaign.cash">
+            </div>
+            <div class="item item-divider" />
+            <li class="item item-checkbox">
+                Repeat
+                <label class="checkbox">
+                    <input type="checkbox">
+                </label>
+            </li>
+              <li class="item item-checkbox">
+                Email report
+                <label class="checkbox">
+                    <input type="checkbox">
+                </label>
+            </li>
+        </div>
+    </ion-content>
+</ion-modal-view>
